@@ -10,8 +10,19 @@
         :root {
             --red-laravel: #FF2D20;
             --bg-light: #F3F4F6;
+            --card-light: #ffffff;
             --text-dark: #111827;
             --text-gray: #4B5563;
+            --border-color: #e5e7eb;
+        }
+
+        /* Variables para Modo Oscuro */
+        [data-theme="dark"] {
+            --bg-light: #0b1120;
+            --card-light: #1e293b;
+            --text-dark: #f8fafc;
+            --text-gray: #94a3b8;
+            --border-color: #334155;
         }
 
         body { 
@@ -19,116 +30,85 @@
             color: var(--text-dark); 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
+            transition: background-color 0.3s, color 0.3s;
             background-image: url("https://laravel.com/img/notification-dots.png");
             background-repeat: no-repeat;
             background-position: top right;
+        }
+
+        /* Barra Lateral Flotante */
+        .side-bar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .side-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--card-light);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            color: var(--text-dark);
+        }
+
+        .side-btn:hover {
+            border-color: var(--red-laravel);
+            transform: scale(1.1);
         }
 
         .navbar { padding: 2rem; display: flex; justify-content: center; }
         .logo-text { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
         .logo-text span { color: var(--red-laravel); }
 
-        header { 
-            text-align: center; 
-            padding: 60px 20px; 
-            max-width: 850px; 
-            margin: auto; 
-        }
+        header { text-align: center; padding: 60px 20px; max-width: 850px; margin: auto; }
 
-        /* Estilos para la foto de perfil circular */
-        .profile-container {
-            margin: 20px auto 30px;
-            width: 180px;
-            height: 180px;
-            position: relative;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%; /* Esto hace el círculo */
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        /* Anillo decorativo estilo Laravel */
-        .profile-container::after {
-            content: '';
-            position: absolute;
-            top: -8px; left: -8px; right: -8px; bottom: -8px;
-            border-radius: 50%;
-            border: 2px solid var(--red-laravel);
-            opacity: 0.3;
-        }
+        .profile-container { margin: 20px auto 30px; width: 180px; height: 180px; position: relative; }
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 4px solid white; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .profile-container::after { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; border-radius: 50%; border: 2px solid var(--red-laravel); opacity: 0.3; }
 
         h1 { font-size: 3.5rem; font-weight: 800; line-height: 1; margin-bottom: 20px; letter-spacing: -2px; }
-        .hero-desc { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.8; text-align: justify; }
+        .hero-desc { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.8; }
 
         .container { max-width: 1100px; margin: auto; padding: 0 20px 100px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
-        }
+        .card { background: var(--card-light); padding: 40px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); border-color: var(--red-laravel); }
+        .icon-box { width: 50px; height: 50px; background: #fff5f5; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--red-laravel); margin-bottom: 20px; }
+        
+        /* Ajuste de icono en modo oscuro */
+        [data-theme="dark"] .icon-box { background: #450a0a; }
 
-        .card { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 1px solid transparent;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
-            border-color: var(--red-laravel);
-        }
-
-        .icon-box { 
-            width: 50px; height: 50px; 
-            background: #fff5f5; 
-            border-radius: 12px; 
-            display: flex; align-items: center; justify-content: center; 
-            color: var(--red-laravel); margin-bottom: 20px; 
-        }
-
-        .card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-        .card p { color: var(--text-gray); line-height: 1.6; flex-grow: 1; font-size: 0.95rem; }
-
-        .btn-laravel {
-            background: var(--red-laravel);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 4px 14px 0 rgba(255, 45, 32, 0.39);
-        }
-
-        .btn-laravel:hover { transform: translateY(-2px); background: #e0241a; }
-
-        .tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--red-laravel);
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        footer { text-align: center; padding: 50px; color: var(--text-gray); font-size: 0.85rem; border-top: 1px solid #e5e7eb; margin-top: 50px; }
+        .btn-laravel { background: var(--red-laravel); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; box-shadow: 0 4px 14px 0 rgba(255, 45, 32, 0.39); }
+        .tag { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--red-laravel); letter-spacing: 1px; margin-bottom: 10px; display: block; }
+        footer { text-align: center; padding: 50px; color: var(--text-gray); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 50px; }
     </style>
 </head>
 <body>
+
+<div class="side-bar">
+    <div class="side-btn" id="theme-toggle" title="Cambiar modo">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </div>
+    <a href="https://github.com/tu-usuario" target="_blank" class="side-btn" title="GitHub">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:tu-correo@ejemplo.com" class="side-btn" title="Email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
 
 <nav class="navbar">
     <div class="logo-text">RAFAEL<span>MARTINEZ</span></div>
@@ -136,18 +116,14 @@
 
 <header>
     <h1>Sobre <span style="color: var(--red-laravel)">Mi</span>.</h1>
-    
     <div class="profile-container">
         <img src="Foto Perfil Jeyson.jpeg" alt="Rafael Martínez" class="profile-img">
     </div>
-
     <p class="hero-desc">
-        Soy un apasionado de la <strong>Ingeniería de Software e Inteligencia Artificial</strong> en formación (4to ciclo). Mi enfoque se centra en construir soluciones eficientes combinando el desarrollo Full Stack con el análisis de datos.
-        <br><br>
-        Tengo experiencia sólida manejando lenguajes como <strong>Python y Java</strong>, y una base técnica robusta en el ecosistema de bases de datos (Oracle, MySQL, PostgreSQL). Me motiva el reto de integrar modelos inteligentes en aplicaciones web modernas, utilizando lenguajes como PHP y JavaScript para crear experiencias de usuario completas y funcionales.
+        Soy un apasionado de la <strong>Ingeniería de Software e Inteligencia Artificial</strong> en formación (4to ciclo). 
+        Mi enfoque se centra en construir soluciones eficientes combinando el desarrollo Full Stack con el análisis de datos.
     </p>
-    
-    <a href="https://linkedin.com/in/tu-usuario" class="btn-laravel">Contactar conmigo</a>
+    <a href="#" class="btn-laravel">Contactar conmigo</a>
 </header>
 
 <div class="container">
@@ -156,37 +132,43 @@
             <span class="tag">Proyecto Destacado</span>
             <div class="icon-box"><i class="fas fa-cubes fa-lg"></i></div>
             <h3>Nexus Stock IA</h3>
-            <p>Optimización de inventarios mediante redes neuronales. Una herramienta robusta para la predicción de demanda en tiempo real.</p>
-            <div style="margin-top: 20px; color: var(--red-laravel); font-weight: 600; cursor: pointer;">
-                Ver documentación →
-            </div>
+            <p>Optimización de inventarios mediante redes neuronales.</p>
         </div>
-
         <div class="card">
             <span class="tag">Machine Learning</span>
             <div class="icon-box"><i class="fas fa-brain fa-lg"></i></div>
             <h3>Análisis Predictivo</h3>
-            <p>Implementación de modelos estadísticos avanzados para el análisis de comportamiento de usuarios en plataformas bancarias.</p>
-            <div style="margin-top: 20px; color: var(--red-laravel); font-weight: 600; cursor: pointer;">
-                Explorar código →
-            </div>
-        </div>
-
-        <div class="card">
-            <span class="tag">Ecosistema</span>
-            <div class="icon-box"><i class="fas fa-server fa-lg"></i></div>
-            <h3>Infraestructura IA</h3>
-            <p>Despliegue de modelos en contenedores Docker con escalabilidad automática en la nube.</p>
-            <div style="margin-top: 20px; color: var(--red-laravel); font-weight: 600; cursor: pointer;">
-                Ver arquitectura →
-            </div>
+            <p>Modelos estadísticos avanzados para plataformas bancarias.</p>
         </div>
     </div>
 </div>
 
-<footer>
-    &copy; 2026 Rafael Martínez. Construido con pasión e Inteligencia Artificial.
-</footer>
+<footer>&copy; 2026 Rafael Martínez. Construido con pasión e IA.</footer>
+
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const currentTheme = localStorage.getItem('theme');
+
+    // Aplicar el tema guardado al cargar
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        let theme = 'light';
+        if (document.documentElement.getAttribute('data-theme') !== 'dark') {
+            theme = 'dark';
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        localStorage.setItem('theme', theme);
+    });
+</script>
 
 </body>
 </html>
