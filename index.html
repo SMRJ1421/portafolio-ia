@@ -16,7 +16,6 @@
             --border-color: #e5e7eb;
         }
 
-        /* Variables para Modo Oscuro */
         [data-theme="dark"] {
             --bg-light: #0b1120;
             --card-light: #1e293b;
@@ -36,7 +35,7 @@
             background-position: top right;
         }
 
-        /* Barra Lateral Flotante */
+        /* Barra Lateral */
         .side-bar {
             position: fixed;
             right: 20px;
@@ -68,32 +67,45 @@
             transform: scale(1.1);
         }
 
-        .navbar { padding: 2rem; display: flex; justify-content: center; }
+        .navbar { padding: 2rem 2rem 0; display: flex; justify-content: center; }
         .logo-text { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
         .logo-text span { color: var(--red-laravel); }
 
-        header { text-align: center; padding: 60px 20px; max-width: 850px; margin: auto; }
+        header { 
+            text-align: center; 
+            padding: 40px 20px; 
+            max-width: 850px; 
+            margin: auto; 
+        }
 
-        .profile-container { margin: 20px auto 30px; 
-    width: 180px; 
-    height: 180px; 
-    position: relative;
-    border: 2px solid var(--red-laravel); /* El borde rojo */
-    border-radius: 50%;
-    padding: 8px; /* Este es el espacio entre el rojo y la foto */
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-        .profile-img { width: 100%; 
-    height: 100%; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    border: 4px solid white; /* El borde blanco interno */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        
+        /* FOTO DE PERFIL ENCUADRADA */
+        .profile-container { 
+            margin: 0 auto 20px; 
+            width: 180px; 
+            height: 180px; 
+            position: relative;
+            border: 2px solid var(--red-laravel); 
+            border-radius: 50%;
+            padding: 8px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(255, 45, 32, 0.2);
+        }
 
-        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1; margin-bottom: 20px; letter-spacing: -2px; }
-        .hero-desc { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.8; }
+        .profile-img { 
+            width: 100%; 
+            height: 100%; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 4px solid white; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+        }
+
+        /* TEXTOS */
+        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; letter-spacing: -2px; }
+        .hero-title { font-size: 4rem; font-weight: 800; margin: 10px 0; letter-spacing: -3px; }
+        .hero-desc { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.8; text-align: center; }
 
         .container { max-width: 1100px; margin: auto; padding: 0 20px 100px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
@@ -102,7 +114,6 @@
         .card:hover { transform: translateY(-5px); border-color: var(--red-laravel); }
         .icon-box { width: 50px; height: 50px; background: #fff5f5; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--red-laravel); margin-bottom: 20px; }
         
-        /* Ajuste de icono en modo oscuro */
         [data-theme="dark"] .icon-box { background: #450a0a; }
 
         .btn-laravel { background: var(--red-laravel); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; box-shadow: 0 4px 14px 0 rgba(255, 45, 32, 0.39); }
@@ -116,12 +127,8 @@
     <div class="side-btn" id="theme-toggle" title="Cambiar modo">
         <i class="fas fa-moon" id="theme-icon"></i>
     </div>
-    <a href="https://github.com/tu-usuario" target="_blank" class="side-btn" title="GitHub">
-        <i class="fab fa-github"></i>
-    </a>
-    <a href="mailto:tu-correo@ejemplo.com" class="side-btn" title="Email">
-        <i class="fas fa-envelope"></i>
-    </a>
+    <a href="#" class="side-btn" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="#" class="side-btn" title="Email"><i class="fas fa-envelope"></i></a>
 </div>
 
 <nav class="navbar">
@@ -129,10 +136,12 @@
 </nav>
 
 <header>
-    <h1>Sobre <span style="color: var(--red-laravel)">Mi</span>.</h1>
     <div class="profile-container">
         <img src="Jeyson.jpeg" alt="Rafael Martínez" class="profile-img">
     </div>
+
+    <h1 class="hero-title">Sobre <span style="color: var(--red-laravel)">Mi</span>.</h1>
+    
     <p class="hero-desc">
         Soy un apasionado de la <strong>Ingeniería de Software e Inteligencia Artificial</strong> en formación (4to ciclo). 
         Mi enfoque se centra en construir soluciones eficientes combinando el desarrollo Full Stack con el análisis de datos.
@@ -146,13 +155,13 @@
             <span class="tag">Proyecto Destacado</span>
             <div class="icon-box"><i class="fas fa-cubes fa-lg"></i></div>
             <h3>Nexus Stock IA</h3>
-            <p>Optimización de inventarios mediante redes neuronales.</p>
+            <p>Optimización de inventarios mediante redes neuronales. Una herramienta robusta para la predicción de demanda en tiempo real.</p>
         </div>
         <div class="card">
             <span class="tag">Machine Learning</span>
             <div class="icon-box"><i class="fas fa-brain fa-lg"></i></div>
             <h3>Análisis Predictivo</h3>
-            <p>Modelos estadísticos avanzados para plataformas bancarias.</p>
+            <p>Implementación de modelos estadísticos avanzados para el análisis de comportamiento de usuarios en plataformas bancarias.</p>
         </div>
     </div>
 </div>
@@ -164,7 +173,6 @@
     const themeIcon = document.getElementById('theme-icon');
     const currentTheme = localStorage.getItem('theme');
 
-    // Aplicar el tema guardado al cargar
     if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
         themeIcon.classList.replace('fa-moon', 'fa-sun');
