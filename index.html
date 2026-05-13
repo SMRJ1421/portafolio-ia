@@ -3,90 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio | Ingeniero de Software e IA</title>
+    <title>Rafael Martínez | Software & IA Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --bg: #020617; --card: #0f172a; --accent: #22c55e; --text: #f8fafc; --text-dim: #94a3b8; }
-        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; line-height: 1.6; }
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at top, #1e293b 0%, #020617 100%); }
-        .container { max-width: 1000px; margin: auto; padding: 40px 20px; }
-        h1 { font-size: 3.5rem; margin-bottom: 10px; }
-        .accent { color: var(--accent); }
-        .tagline { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; }
-        
-        /* Botones */
-        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; margin: 5px; display: inline-block; }
-        .btn-primary { background: var(--accent); color: #000; }
-        .btn-secondary { border: 1px solid var(--accent); color: var(--accent); }
-        .btn:hover { opacity: 0.8; transform: translateY(-3px); }
+        :root {
+            --red-laravel: #FF2D20;
+            --bg-light: #F3F4F6;
+            --text-dark: #111827;
+            --text-gray: #4B5563;
+        }
 
-        /* Grid de Proyectos */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
-        .card { background: var(--card); border: 1px solid #1e293b; border-radius: 15px; padding: 20px; transition: 0.3s; }
-        .card:hover { border-color: var(--accent); }
-        .card h3 { margin-top: 0; }
-        .card-media { background: #1e293b; height: 180px; border-radius: 10px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; color: var(--text-dim); }
+        body { 
+            background-color: var(--bg-light); 
+            color: var(--text-dark); 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            background-image: url("https://laravel.com/img/notification-dots.png"); /* Puntos sutiles de Laravel */
+            background-repeat: no-repeat;
+            background-position: top right;
+        }
 
-        /* Skills */
-        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-        .skill-tag { background: #1e293b; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid #334155; }
-        
-        footer { text-align: center; padding: 40px; color: var(--text-dim); border-top: 1px solid #1e293b; }
+        .navbar { padding: 2rem; display: flex; justify-content: center; }
+        .logo-text { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
+        .logo-text span { color: var(--red-laravel); }
+
+        header { 
+            text-align: center; 
+            padding: 100px 20px; 
+            max-width: 800px; 
+            margin: auto; 
+        }
+
+        h1 { font-size: 4rem; font-weight: 800; line-height: 1; margin-bottom: 20px; letter-spacing: -2px; }
+        .hero-desc { font-size: 1.25rem; color: var(--text-gray); margin-bottom: 40px; }
+
+        .container { max-width: 1100px; margin: auto; padding: 0 20px 100px; }
+
+        /* El famoso grid de Laravel */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 30px; 
+        }
+
+        .card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            border-color: var(--red-laravel);
+        }
+
+        .icon-box { 
+            width: 50px; height: 50px; 
+            background: #fff5f5; 
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: var(--red-laravel); margin-bottom: 20px; 
+        }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .card p { color: var(--text-gray); line-height: 1.7; flex-grow: 1; }
+
+        .btn-laravel {
+            background: var(--red-laravel);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-laravel:hover { background: #e0241a; }
+
+        .tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--red-laravel);
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        footer { text-align: center; padding: 50px; color: var(--text-gray); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
+<nav class="navbar">
+    <div class="logo-text">RAFAEL<span>MARTINEZ</span></div>
+</nav>
+
 <header>
-    <h1>Rafael <span class="accent">Martínez</span></h1>
-    <p class="tagline">Ingeniero de Software especializado en <span class="accent">Inteligencia Artificial</span></p>
-    <div>
-        <a href="#" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="#" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Descargar CV</a>
-    </div>
+    <h1>La ingeniería de <span style="color: var(--red-laravel)">IA</span> hecha simple.</h1>
+    <p class="hero-desc">Desarrollador de Software enfocado en crear soluciones inteligentes, escalables y elegantes. Especializado en arquitecturas modernas y modelos de aprendizaje profundo.</p>
+    <a href="https://linkedin.com/in/tu-usuario" class="btn-laravel">Contactar conmigo</a>
 </header>
 
 <div class="container">
-    <section>
-        <h2><i class="fas fa-code accent"></i> Mis Proyectos con IA</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-media">
-                    <i class="fas fa-robot fa-3x"></i>
-                </div>
-                <h3>Nexus Stock IA</h3>
-                <p>Sistema de gestión inteligente de inventarios usando algoritmos de predicción de demanda.</p>
-                <div class="skills">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">FastAPI</span>
-                    <span class="skill-tag">TensorFlow</span>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-media"><i class="fas fa-brain fa-3x"></i></div>
-                <h3>Análisis de Sentimiento</h3>
-                <p>Modelo de NLP que clasifica opiniones de usuarios en tiempo real con un 94% de precisión.</p>
-                <div class="skills">
-                    <span class="skill-tag">NLTK</span>
-                    <span class="skill-tag">Scikit-learn</span>
-                </div>
+    <div class="grid">
+        <div class="card">
+            <span class="tag">Proyecto Destacado</span>
+            <div class="icon-box"><i class="fas fa-cubes fa-lg"></i></div>
+            <h3>Nexus Stock IA</h3>
+            <p>Optimización de inventarios mediante redes neuronales. Una herramienta robusta para la predicción de demanda en tiempo real.</p>
+            <div style="margin-top: 20px; color: var(--red-laravel); font-weight: 600; cursor: pointer;">
+                Ver documentación →
             </div>
         </div>
-    </section>
 
-    <section style="margin-top: 60px;">
-        <h2><i class="fas fa-tools accent"></i> Tecnologías & Lenguajes</h2>
-        <div class="skills">
-            <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">Java</span><span class="skill-tag">Machine Learning</span>
-            <span class="skill-tag">Deep Learning</span><span class="skill-tag">SQL</span>
-            <span class="skill-tag">Docker</span><span class="skill-tag">Cloud (AWS/Azure)</span>
+        <div class="card">
+            <span class="tag">Machine Learning</span>
+            <div class="icon-box"><i class="fas fa-brain fa-lg"></i></div>
+            <h3>Análisis Predictivo</h3>
+            <p>Implementación de modelos estadísticos avanzados para el análisis de comportamiento de usuarios en plataformas bancarias.</p>
+            <div style="margin-top: 20px; color: var(--red-laravel); font-weight: 600; cursor: pointer;">
+                Explorar código →
+            </div>
         </div>
-    </section>
+
+        <div class="card">
+            <span class="tag">Ecosistema</span>
+            <div class="icon-box"><i class="fas fa-server fa-lg"></i></div>
+            <h3>Infraestructura IA</h3>
+            <p>Despliegue de modelos en contenedores Docker con escalabilidad automática en la nube.</p>
+            <div style="margin-top: 20px; color: var(--red-laravel); font-weight: 600; cursor: pointer;">
+                Ver arquitectura →
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 Rafael Martínez - Ingeniería de Software e IA</p>
+    &copy; 2026 Rafael Martínez. Construido con pasión e Inteligencia Artificial.
 </footer>
 
 </body>
