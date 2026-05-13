@@ -1,12 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Portafolio IA - En construcción</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Ingeniero de Software e IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: #0f172a; color: white; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; }
+        :root { --bg: #020617; --card: #0f172a; --accent: #22c55e; --text: #f8fafc; --text-dim: #94a3b8; }
+        body { background-color: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; line-height: 1.6; }
+        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at top, #1e293b 0%, #020617 100%); }
+        .container { max-width: 1000px; margin: auto; padding: 40px 20px; }
+        h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .accent { color: var(--accent); }
+        .tagline { font-size: 1.2rem; color: var(--text-dim); margin-bottom: 30px; }
+        
+        /* Botones */
+        .btn { padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; margin: 5px; display: inline-block; }
+        .btn-primary { background: var(--accent); color: #000; }
+        .btn-secondary { border: 1px solid var(--accent); color: var(--accent); }
+        .btn:hover { opacity: 0.8; transform: translateY(-3px); }
+
+        /* Grid de Proyectos */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .card { background: var(--card); border: 1px solid #1e293b; border-radius: 15px; padding: 20px; transition: 0.3s; }
+        .card:hover { border-color: var(--accent); }
+        .card h3 { margin-top: 0; }
+        .card-media { background: #1e293b; height: 180px; border-radius: 10px; margin-bottom: 15px; display: flex; justify-content: center; align-items: center; color: var(--text-dim); }
+
+        /* Skills */
+        .skills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+        .skill-tag { background: #1e293b; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid #334155; }
+        
+        footer { text-align: center; padding: 40px; color: var(--text-dim); border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
-    <h1>Hola, soy Ingeniero de Software e IA. ¡Web en camino!</h1>
+
+<header>
+    <h1>Rafael <span class="accent">Martínez</span></h1>
+    <p class="tagline">Ingeniero de Software especializado en <span class="accent">Inteligencia Artificial</span></p>
+    <div>
+        <a href="#" class="btn btn-primary"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="#" class="btn btn-secondary"><i class="fas fa-file-pdf"></i> Descargar CV</a>
+    </div>
+</header>
+
+<div class="container">
+    <section>
+        <h2><i class="fas fa-code accent"></i> Mis Proyectos con IA</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-media">
+                    <i class="fas fa-robot fa-3x"></i>
+                </div>
+                <h3>Nexus Stock IA</h3>
+                <p>Sistema de gestión inteligente de inventarios usando algoritmos de predicción de demanda.</p>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">TensorFlow</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-media"><i class="fas fa-brain fa-3x"></i></div>
+                <h3>Análisis de Sentimiento</h3>
+                <p>Modelo de NLP que clasifica opiniones de usuarios en tiempo real con un 94% de precisión.</p>
+                <div class="skills">
+                    <span class="skill-tag">NLTK</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top: 60px;">
+        <h2><i class="fas fa-tools accent"></i> Tecnologías & Lenguajes</h2>
+        <div class="skills">
+            <span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Java</span><span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Deep Learning</span><span class="skill-tag">SQL</span>
+            <span class="skill-tag">Docker</span><span class="skill-tag">Cloud (AWS/Azure)</span>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Rafael Martínez - Ingeniería de Software e IA</p>
+</footer>
+
 </body>
 </html>
