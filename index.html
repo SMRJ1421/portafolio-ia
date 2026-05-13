@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafael Martínez | Software & IA Engineer</title>
+    <title>Rafael Martínez | Portafolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -14,6 +14,7 @@
             --text-dark: #111827;
             --text-gray: #4B5563;
             --border-color: #e5e7eb;
+            --bg-skill: #f9fafb;
         }
 
         [data-theme="dark"] {
@@ -22,6 +23,7 @@
             --text-dark: #f8fafc;
             --text-gray: #94a3b8;
             --border-color: #334155;
+            --bg-skill: #1e293b;
         }
 
         body { 
@@ -35,7 +37,7 @@
             background-position: top right;
         }
 
-        /* Barra Lateral */
+        /* Barra Lateral con el botón Contacto */
         .side-bar {
             position: fixed;
             right: 20px;
@@ -43,7 +45,7 @@
             transform: translateY(-50%);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             z-index: 1000;
         }
 
@@ -60,6 +62,13 @@
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
             transition: 0.3s;
             color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        .side-btn.contact-special {
+            background: var(--red-laravel);
+            color: white;
+            border: none;
         }
 
         .side-btn:hover {
@@ -71,64 +80,74 @@
         .logo-text { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; }
         .logo-text span { color: var(--red-laravel); }
 
-        header { 
-            text-align: center; 
-            padding: 40px 20px; 
-            max-width: 850px; 
-            margin: auto; 
-        }
+        header { text-align: center; padding: 40px 20px; max-width: 850px; margin: auto; }
 
-        /* FOTO DE PERFIL ENCUADRADA */
         .profile-container { 
-            margin: 0 auto 20px; 
-            width: 180px; 
-            height: 180px; 
-            position: relative;
-            border: 2px solid var(--red-laravel); 
-            border-radius: 50%;
-            padding: 8px; 
+            margin: 0 auto 20px; width: 160px; height: 160px; position: relative;
+            border: 2px solid var(--red-laravel); border-radius: 50%; padding: 6px; 
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+        .hero-title { font-size: 3.5rem; font-weight: 800; margin: 10px 0; letter-spacing: -2px; }
+        .hero-desc { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; line-height: 1.6; }
+
+        /* SECCIÓN HABILIDADES */
+        .skills-section { margin-top: 40px; }
+        .skills-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 25px; }
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px; 
+            max-width: 700px; 
+            margin: 0 auto 50px;
+        }
+
+        .skill-item {
+            background: var(--bg-skill);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 20px rgba(255, 45, 32, 0.2);
+            gap: 10px;
+            transition: 0.3s;
         }
 
-        .profile-img { 
-            width: 100%; 
-            height: 100%; 
-            border-radius: 50%; 
-            object-fit: cover; 
-            border: 4px solid white; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-        }
+        .skill-item:hover { border-color: var(--red-laravel); transform: translateY(-3px); }
+        .skill-item i { font-size: 2rem; }
+        .skill-item span { font-size: 0.85rem; font-weight: 600; }
 
-        /* TEXTOS */
-        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 10px; letter-spacing: -2px; }
-        .hero-title { font-size: 4rem; font-weight: 800; margin: 10px 0; letter-spacing: -3px; }
-        .hero-desc { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 40px; line-height: 1.8; text-align: center; }
+        /* Icon Colors */
+        .fa-react { color: #61DAFB; }
+        .fa-js { color: #F7DF1E; }
+        .fa-node-js { color: #339933; }
+        .fa-python { color: #3776AB; }
+        .fa-database { color: #4479A1; } /* MySQL */
+        .fa-envira { color: #47A248; } /* MongoDB */
+        .fa-css3-alt { color: #38BDF8; } /* Tailwind */
 
-        .container { max-width: 1100px; margin: auto; padding: 0 20px 100px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .container { max-width: 1100px; margin: auto; padding: 0 20px 80px; }
+        .grid-projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card { background: var(--card-light); padding: 30px; border-radius: 20px; border: 1px solid var(--border-color); transition: 0.3s; }
+        .card:hover { border-color: var(--red-laravel); }
 
-        .card { background: var(--card-light); padding: 40px; border-radius: 20px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); transition: 0.3s; border: 1px solid var(--border-color); display: flex; flex-direction: column; }
-        .card:hover { transform: translateY(-5px); border-color: var(--red-laravel); }
-        .icon-box { width: 50px; height: 50px; background: #fff5f5; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--red-laravel); margin-bottom: 20px; }
-        
-        [data-theme="dark"] .icon-box { background: #450a0a; }
-
-        .btn-laravel { background: var(--red-laravel); color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; box-shadow: 0 4px 14px 0 rgba(255, 45, 32, 0.39); }
-        .tag { font-size: 0.7rem; text-transform: uppercase; font-weight: 700; color: var(--red-laravel); letter-spacing: 1px; margin-bottom: 10px; display: block; }
-        footer { text-align: center; padding: 50px; color: var(--text-gray); font-size: 0.85rem; border-top: 1px solid var(--border-color); margin-top: 50px; }
+        footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 0.8rem; border-top: 1px solid var(--border-color); }
     </style>
 </head>
 <body>
 
 <div class="side-bar">
-    <div class="side-btn" id="theme-toggle" title="Cambiar modo">
+    <a href="mailto:tu-correo@ejemplo.com" class="side-btn contact-special" title="Contactar conmigo">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+    <div class="side-btn" id="theme-toggle" title="Modo Oscuro/Claro">
         <i class="fas fa-moon" id="theme-icon"></i>
     </div>
-    <a href="#" class="side-btn" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="#" class="side-btn" title="Email"><i class="fas fa-envelope"></i></a>
+    <a href="https://github.com/SMRJ1421" target="_blank" class="side-btn" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="#" class="side-btn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
 </div>
 
 <nav class="navbar">
@@ -146,49 +165,49 @@
         Soy un apasionado de la <strong>Ingeniería de Software e Inteligencia Artificial</strong> en formación (4to ciclo). 
         Mi enfoque se centra en construir soluciones eficientes combinando el desarrollo Full Stack con el análisis de datos.
     </p>
-    <a href="#" class="btn-laravel">Contactar conmigo</a>
+
+    <div class="skills-section">
+        <h2 class="skills-title">Mis Habilidades</h2>
+        <div class="skills-grid">
+            <div class="skill-item"><i class="fab fa-react"></i><span>React</span></div>
+            <div class="skill-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+            <div class="skill-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
+            <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="skill-item"><i class="fab fa-css3-alt"></i><span>Tailwind</span></div>
+            <div class="skill-item"><i class="fas fa-leaf"></i><span>MongoDB</span></div>
+            <div class="skill-item"><i class="fas fa-database"></i><span>MySQL</span></div>
+            <div class="skill-item"><i class="fas fa-code-branch"></i><span>Express.js</span></div>
+        </div>
+    </div>
 </header>
 
 <div class="container">
-    <div class="grid">
+    <div class="grid-projects">
         <div class="card">
-            <span class="tag">Proyecto Destacado</span>
-            <div class="icon-box"><i class="fas fa-cubes fa-lg"></i></div>
             <h3>Nexus Stock IA</h3>
-            <p>Optimización de inventarios mediante redes neuronales. Una herramienta robusta para la predicción de demanda en tiempo real.</p>
+            <p>Optimización de inventarios mediante redes neuronales.</p>
         </div>
         <div class="card">
-            <span class="tag">Machine Learning</span>
-            <div class="icon-box"><i class="fas fa-brain fa-lg"></i></div>
             <h3>Análisis Predictivo</h3>
-            <p>Implementación de modelos estadísticos avanzados para el análisis de comportamiento de usuarios en plataformas bancarias.</p>
+            <p>Modelos estadísticos para comportamiento bancario.</p>
         </div>
     </div>
 </div>
 
-<footer>&copy; 2026 Rafael Martínez. Construido con pasión e IA.</footer>
+<footer>&copy; 2026 Rafael Martínez. Todos los derechos reservados.</footer>
 
 <script>
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-    const currentTheme = localStorage.getItem('theme');
-
-    if (currentTheme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
+    
     themeToggle.addEventListener('click', () => {
-        let theme = 'light';
         if (document.documentElement.getAttribute('data-theme') !== 'dark') {
-            theme = 'dark';
             document.documentElement.setAttribute('data-theme', 'dark');
             themeIcon.classList.replace('fa-moon', 'fa-sun');
         } else {
             document.documentElement.removeAttribute('data-theme');
             themeIcon.classList.replace('fa-sun', 'fa-moon');
         }
-        localStorage.setItem('theme', theme);
     });
 </script>
 
