@@ -1,1 +1,77 @@
+/* --- ESTILOS PARA EL CARRUSEL DE CONTENIDO --- */
 
+.carrusel-container {
+  max-width: 900px; /* Ancho máximo del carrusel */
+  margin: 40px auto; /* Centrar y dar espacio vertical */
+  position: relative;
+  overflow: hidden; /* Ocultar slides que no están activos */
+  border-radius: 12px; /* Esquinas redondeadas como tu diseño */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  background: white; /* Fondo blanco para las imágenes */
+}
+
+.carrusel-slides {
+  display: flex; /* Colocar slides en fila */
+  transition: transform 0.5s ease; /* Transición suave de deslizamiento */
+  width: 100%; /* El contenedor total tiene el ancho acumulado */
+}
+
+.carrusel-slide {
+  min-width: 100%; /* Cada slide ocupa el 100% del contenedor visible */
+  height: 500px; /* Altura fija para que el video y las imágenes sean iguales */
+  display: flex;
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  background: #f3f4f6; /* Fondo gris claro */
+}
+
+.carrusel-slide video {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.carrusel-slide img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ajustar imagen sin deformar */
+}
+
+/* --- FLECHAS DE NAVEGACIÓN --- */
+
+.carrusel-prev, .carrusel-next {
+  position: absolute;
+  top: 50%; /* Centrar verticalmente */
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 50%; /* Flechas redondas */
+  font-size: 24px;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.carrusel-prev:hover, .carrusel-next:hover {
+  background: var(--red-laravel); /* Cambiar a tu color Laravel al pasar el mouse */
+}
+
+.carrusel-prev {
+  left: 20px;
+}
+
+.carrusel-next {
+  right: 20px;
+}
+
+/* --- ESTADOS DE ACTIVIDAD Y LOGICA (Necesario para que funcione el cambio) --- */
+/* (Sin JavaScript, solo se vería un slide. Este CSS oculta los inactivos) */
+
+.carrusel-slide {
+  display: none; /* Ocultar todos por defecto */
+}
+
+.carrusel-slide.active {
+  display: flex; /* Mostrar solo el activo */
+}
