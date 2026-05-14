@@ -1,97 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <meta charset="UTF-8">
-    <title>Nexus Stock - Detalles</title>
-    
-    <section class="project-media">
-    <div class="main-shot">
-        <img src="8grafico.png" alt="Análisis Predictivo Nexus Stock">
-    </div>
-<section class="carrusel-container">
-  <div class="carrusel-slides">
-    <article class="carrusel-slide active" id="slide-video">
-      <div class="video-wrapper">
-        <video controls>
-          <source src="video-demo.mp4" type="video/mp4">
-          Tu navegador no soporta video HTML5.
-        </video>
-      </div>
-    </article>
-
-    <article class="carrusel-slide" id="slide-img1">
-      <img src="1login.png" alt="Pantalla de inicio Nexus Stock">
-    </article>
-
-    <article class="carrusel-slide" id="slide-img2">
-      <img src="8grafico.png" alt="Dashboard analítico Nexus Stock">
-    </article>
-
-    <article class="carrusel-slide" id="slide-img3">
-      <img src="9pdf.png" alt="Reporte generado en PDF">
-    </article>
-  </div>
-
-  <button class="carrusel-prev" aria-label="Anterior slide">&#10094;</button>
-  <button class="carrusel-next" aria-label="Siguiente slide">&#10095;</button>
-</section>
-    <div class="image-gallery">
-        <img src="2menu.png" alt="Menu">
-        <img src="3inventario.png" alt="Gestión de Stock">
-        <img src="1login.png" alt="Pantalla de acceso">
-        <img src="9pdf.png" alt="Reporte generado en PDF">
-    </div>
-</section>
-
-<section class="project-info">
-    <h2>Descripción del Proyecto</h2>
-    <p>Sistema predictivo para la gestión de inventarios para Caja Huancayo...</p>
-    
-    <h3>Tecnologías y Programas usados</h3>
-    <ul class="tech-list">
-        <li><strong>Lenguajes:</strong> Python, PHP</li>
-        <li><strong>Base de Datos:</strong> PostgreSQL</li>
-        <li><strong>IA:</strong> TensorFlow</li>
-        <li><strong>Documentación:</strong> StarUML</li>
-    </ul>
-</section>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Stock IA - Detalles</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
-        <a href="index.html" class="btn-back">← Volver al inicio</a>
-        
+        <nav>
+            <a href="index.html" class="btn-back">← Volver al inicio</a>
+        </nav>
+
         <header class="project-header">
             <h1>Nexus Stock IA</h1>
-            <p class="tagline">Optimización de inventarios mediante redes neuronales</p>
+            <p class="tagline">Optimización de inventarios mediante redes neuronales para Caja Huancayo</p>
         </header>
 
-        <section class="project-media">
-            <div class="video-container">
-                <video controls poster="img/nexus-preview.jpg">
-                    <source src="video/demo-nexus.mp4" type="video/mp4">
-                    Tu navegador no soporta videos.
-                </video>
+        <section class="carrusel-container">
+            <div class="carrusel-slides">
+                
+                <article class="carrusel-slide active">
+                    <div class="video-wrapper">
+                        <video controls>
+                            <source src="video/demo-nexus.mp4" type="video/mp4">
+                            Tu navegador no soporta videos.
+                        </video>
+                    </div>
+                </article>
+
+                <article class="carrusel-slide"><img src="1login.png" alt="Login"></article>
+                <article class="carrusel-slide"><img src="2menu.png" alt="Menu Principal"></article>
+                <article class="carrusel-slide"><img src="3inventario.png" alt="Gestión de Inventario"></article>
+                <article class="carrusel-slide"><img src="4editarproducto.png" alt="Editar Producto"></article>
+                <article class="carrusel-slide"><img src="5nuevoproducto.png" alt="Nuevo Producto"></article>
+                <article class="carrusel-slide"><img src="6registarventa.png" alt="Registro de Venta"></article>
+                <article class="carrusel-slide"><img src="7categoriaresgistrada.png" alt="Categorías"></article>
+                <article class="carrusel-slide"><img src="8grafico.png" alt="Dashboard Analítico"></article>
+                <article class="carrusel-slide"><img src="9pdf.png" alt="Reporte en PDF"></article>
             </div>
-            <div class="image-gallery">
-                <img src="img/nexus-dashboard.png" alt="Dashboard de Nexus Stock">
-                <img src="img/nexus-analisis.png" alt="Gráficos de predicción">
-            </div>
+
+            <button class="carrusel-prev" aria-label="Anterior">&#10094;</button>
+            <button class="carrusel-next" aria-label="Siguiente">&#10095;</button>
         </section>
 
         <section class="project-description">
-            <h2>Sobre el proyecto</h2>
-            <p>Aquí colocarás la descripción detallada que mencionaste...</p>
-            
-            <h3>Tecnologías utilizadas</h3>
-            <ul class="tech-list">
-                <li>Python (Core del algoritmo)</li>
-                <li>TensorFlow (Redes neuronales)</li>
-                <li>Pandas (Procesamiento de datos)</li>
-                <li>Flask (Para la API del sistema)</li>
-            </ul>
+            <div class="info-card">
+                <h2>Sobre el proyecto</h2>
+                <p>
+                    Este sistema fue desarrollado para optimizar la gestión de inventarios mediante el uso de 
+                    <strong>redes neuronales</strong>. Permite predecir la demanda de productos, generando alertas 
+                    de stock crítico en tiempo real para evitar quiebres de inventario.
+                </p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Tecnologías utilizadas</h3>
+                <ul class="tech-list">
+                    <li><strong>Python & TensorFlow:</strong> Implementación de redes neuronales para predicción.</li>
+                    <li><strong>PHP & PostgreSQL:</strong> Gestión de base de datos y backend del sistema.</li>
+                    <li><strong>Pandas:</strong> Procesamiento de datos históricos de ventas.</li>
+                    <li><strong>StarUML:</strong> Documentación de casos de uso y diagramas de sistema.</li>
+                </ul>
+            </div>
         </section>
     </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
