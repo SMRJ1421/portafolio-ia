@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro de Visitas Municipal | Rafael Martínez</title>
+    <meta name="description" content="Modelado UML completo de un sistema de registro de visitas municipal con autenticación DNIe/RENIEC, basado en los lineamientos de la PCM.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <nav>
+            <a href="index.html" class="btn-back">&larr; Volver al inicio</a>
+        </nav>
+
+        <header class="project-header">
+            <h1>Registro de Visitas Municipal</h1>
+            <p class="tagline">Modelado UML completo de un sistema de control de ingresos para una municipalidad, con autenticación mediante DNI electrónico y validación contra RENIEC, siguiendo los lineamientos de la PCM y la Ley N.º 28024 de Transparencia.</p>
+        </header>
+
+        <section class="carrusel-container">
+            <div class="carrusel-slides">
+                <article class="carrusel-slide"><img src="visitas-1-casos-uso.jpg" alt="Diagrama de casos de uso"></article>
+                <article class="carrusel-slide"><img src="visitas-2-requisitos.jpg" alt="Mapeo de requerimientos funcionales y no funcionales"></article>
+                <article class="carrusel-slide"><img src="visitas-3-actividades.jpg" alt="Diagrama de actividades del registro y validación"></article>
+                <article class="carrusel-slide"><img src="visitas-4-secuencia.jpg" alt="Diagrama de secuencia de autenticación con DNIe"></article>
+                <article class="carrusel-slide"><img src="visitas-5-estados.jpg" alt="Diagrama de estados del ciclo de vida de la visita"></article>
+                <article class="carrusel-slide"><img src="visitas-6-clases.jpg" alt="Diagrama de clases del sistema"></article>
+                <article class="carrusel-slide"><img src="visitas-7-datos.jpg" alt="Modelo de datos relacional"></article>
+                <article class="carrusel-slide"><img src="visitas-8-componentes.jpg" alt="Diagrama de componentes"></article>
+                <article class="carrusel-slide"><img src="visitas-9-despliegue.jpg" alt="Diagrama de despliegue"></article>
+                <article class="carrusel-slide"><img src="visitas-10-dashboard.jpg" alt="Dashboard de reportes en Power BI"></article>
+            </div>
+
+            <button class="carrusel-prev" aria-label="Imagen anterior">&#10094;</button>
+            <button class="carrusel-next" aria-label="Imagen siguiente">&#10095;</button>
+            <div class="carrusel-dots"></div>
+        </section>
+
+        <section class="project-description">
+            <div class="info-card">
+                <h2>Sobre el proyecto</h2>
+                <p>
+                    El ciudadano se autentica con su <strong>DNI electrónico (DNIe)</strong>: un componente
+                    ClickOnce se comunica con el lector de hardware vía protocolo ISO/IEC 7816, valida el PIN
+                    y confirma la identidad contra <strong>RENIEC</strong> a través de la Plataforma de
+                    Interoperabilidad del Estado (PIDE). Una vez validado, el sistema registra el motivo de la
+                    visita y el funcionario visitado, controla el ciclo completo del ingreso hasta el registro
+                    de salida, y genera reportes de transparencia según lo exige la Ley N.º 28024.
+                </p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Diagramas UML elaborados</h3>
+                <ul class="tech-list">
+                    <li><strong>Casos de uso:</strong> interacción del visitante, RENIEC y el administrador con el sistema.</li>
+                    <li><strong>Requisitos:</strong> mapeo de requerimientos funcionales y no funcionales (integridad, seguridad, trazabilidad).</li>
+                    <li><strong>Actividades:</strong> flujo de validación de DNI y registro de ingreso.</li>
+                    <li><strong>Secuencia:</strong> autenticación con DNIe entre interfaz, componente ClickOnce y RENIEC.</li>
+                    <li><strong>Estados:</strong> ciclo de vida de una visita (validando, registrada, en curso, finalizada, denegada).</li>
+                    <li><strong>Clases:</strong> modelo de dominio (Ciudadano, RegistroVisita, ServidorPúblico, ServicioAutenticación).</li>
+                    <li><strong>Modelo de datos:</strong> esquema relacional (usuario_sistema, ciudadano, visita, funcionario).</li>
+                    <li><strong>Componentes y despliegue:</strong> integración entre interfaz web, backend, lector de hardware y RENIEC.</li>
+                    <li><strong>Dashboard Power BI:</strong> reporte de visitas por área y motivo.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
