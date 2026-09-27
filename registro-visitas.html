@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Visitas Municipal | Rafael Martínez</title>
+    <meta name="description" content="Sistema web de registro de visitas con autenticación 2FA, consulta automática a RENIEC, auditoría y reportes en PDF/Excel.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Las capturas de este informe son verticales: el visor necesita más alto y más angosto */
+        .carrusel-container { max-width: 620px; }
+        .carrusel-slide { height: 640px; }
+        @media (max-width: 720px) { .carrusel-slide { height: 480px; } }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <nav>
+            <a href="index.html" class="btn-back">&larr; Volver al inicio</a>
+        </nav>
+
+        <header class="project-header">
+            <h1>Registro de Visitas Municipal</h1>
+            <p class="tagline">Sistema web de control de accesos institucionales: registro y salida de visitantes, autenticación en dos pasos para el personal, consulta automática a RENIEC y reportes de auditoría exportables.</p>
+        </header>
+
+        <section class="carrusel-container">
+            <div class="carrusel-slides">
+                <article class="carrusel-slide"><img src="registro-1-portal-transparencia.png" alt="Portal de transparencia y reportes de visitas"></article>
+                <article class="carrusel-slide"><img src="registro-2-reportes-estadisticas.png" alt="Vista preliminar de reportes y panel estadístico"></article>
+                <article class="carrusel-slide"><img src="registro-3-login-2fa.png" alt="Login institucional y validación en dos pasos (2FA)"></article>
+                <article class="carrusel-slide"><img src="registro-4-panel-registro.png" alt="Panel de administración y registro de visitas"></article>
+                <article class="carrusel-slide"><img src="registro-5-salidas-auditoria.png" alt="Control de salidas y auditoría del sistema"></article>
+                <article class="carrusel-slide"><img src="registro-6-base-datos.png" alt="Esquema de base de datos en PostgreSQL"></article>
+            </div>
+
+            <button class="carrusel-prev" aria-label="Imagen anterior">&#10094;</button>
+            <button class="carrusel-next" aria-label="Imagen siguiente">&#10095;</button>
+            <div class="carrusel-dots"></div>
+        </section>
+
+        <section class="project-description">
+            <div class="info-card">
+                <h2>Sobre el proyecto</h2>
+                <p>
+                    Sistema web para el control de accesos de una institución pública, basado en normativa PCM.
+                    El personal administrativo inicia sesión con <strong>autenticación en dos pasos (2FA)</strong>
+                    antes de registrar el ingreso de un visitante, con <strong>consulta automática a RENIEC</strong>
+                    para completar los datos del ciudadano por DNI. El sistema controla el ciclo completo de la
+                    visita —ingreso, permanencia y salida— y deja un <strong>log de auditoría</strong> de cada
+                    operación. Incluye un portal público de transparencia con reportes descargables en PDF y Excel,
+                    y un panel estadístico con gráficos de visitas por mes y por canal de registro.
+                </p>
+            </div>
+
+            <div class="tech-card">
+                <h3>Tecnologías utilizadas</h3>
+                <ul class="tech-list tech-list-icons">
+                    <li>
+                        <span class="tech-icon"><i class="fab fa-php"></i></span>
+                        <span class="desc"><strong>PHP:</strong> backend del sistema, sesiones y lógica de negocio.</span>
+                    </li>
+                    <li>
+                        <span class="tech-icon"><i class="fas fa-database"></i></span>
+                        <span class="desc"><strong>PostgreSQL:</strong> base de datos relacional (usuarios, funcionarios, ciudadanos, visitas y auditoría).</span>
+                    </li>
+                    <li>
+                        <span class="tech-icon"><i class="fab fa-js"></i></span>
+                        <span class="desc"><strong>JavaScript:</strong> formularios interactivos, filtros y gráficos en tiempo real.</span>
+                    </li>
+                    <li>
+                        <span class="tech-icon"><i class="fas fa-shield-halved"></i></span>
+                        <span class="desc"><strong>Autenticación 2FA:</strong> segundo factor de verificación para el acceso administrativo.</span>
+                    </li>
+                    <li>
+                        <span class="tech-icon"><i class="fas fa-id-card"></i></span>
+                        <span class="desc"><strong>API RENIEC:</strong> consulta automática de datos del ciudadano por DNI.</span>
+                    </li>
+                    <li>
+                        <span class="tech-icon"><i class="fas fa-file-export"></i></span>
+                        <span class="desc"><strong>Reportes PDF / Excel:</strong> exportación del historial de visitas para auditoría.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
