@@ -8,7 +8,22 @@
   --text-dark: #111827;
   --text-gray: #4B5563;
   --border-color: #e5e7eb;
+  --bg-skill: #f9fafb;
 }
+
+/* Colores de logos de tecnología (mismos que en index.html) */
+.fa-python { color: #3776AB; }
+.fa-java { color: #f89820; }
+.fa-php { color: #777BB4; }
+.fa-hashtag { color: #239120; }
+.fa-html5 { color: #E34F26; }
+.fa-css3-alt { color: #1572B6; }
+.fa-js { color: #F7DF1E; }
+.fa-database { color: #336791; }
+.fa-project-diagram { color: #FF5722; }
+.fa-code-branch { color: #6e5494; }
+.fa-table { color: #150458; }
+.fa-chart-pie { color: #F2C811; }
 
 * { box-sizing: border-box; }
 
@@ -81,6 +96,29 @@ nav { margin-bottom: 30px; }
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+  cursor: zoom-in;
+}
+
+.carrusel-slide img:hover {
+  transform: scale(1.06);
+}
+
+/* --- CONTADOR DE IMÁGENES --- */
+
+.carrusel-counter {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(17, 24, 39, 0.72);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  z-index: 10;
+  backdrop-filter: blur(2px);
 }
 
 .video-wrapper {
@@ -196,6 +234,49 @@ nav { margin-bottom: 30px; }
   background: var(--red-laravel);
 }
 .tech-list li strong { color: var(--text-dark); }
+
+/* Variante con logo de la tecnología en vez de puntito */
+.tech-list.tech-list-icons li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-left: 0;
+}
+.tech-list.tech-list-icons li::before { content: none; }
+.tech-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--bg-skill);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.tech-list.tech-list-icons li span.desc { padding-top: 2px; }
+
+/* Fila de insignias de tecnología (logo + nombre) */
+.tech-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.tech-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-skill);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+.tech-badge i { font-size: 1.05rem; }
 
 @media (max-width: 720px) {
   .project-description { grid-template-columns: 1fr; }

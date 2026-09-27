@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prevBtn = document.querySelector('.carrusel-prev');
   const nextBtn = document.querySelector('.carrusel-next');
   const dotsContainer = document.querySelector('.carrusel-dots');
+  const counterContainer = document.querySelector('.carrusel-container');
 
   if (!track || slides.length === 0) return;
 
@@ -20,9 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     return dot;
   });
 
+  // Contador "actual / total" en la esquina del carrusel
+  let counterCurrent = null;
+  if (counterContainer) {
+    const counter = document.createElement('div');
+    counter.className = 'carrusel-counter';
+    counter.innerHTML = `<span class="current">1</span> / ${slides.length}`;
+    counterContainer.appendChild(counter);
+    counterCurrent = counter.querySelector('.current');
+  }
+
   function update() {
     track.style.transform = `translateX(-${current * 100}%)`;
     dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+    if (counterCurrent) counterCurrent.textContent = current + 1;
   }
 
   function goTo(index) {
