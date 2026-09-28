@@ -7,6 +7,12 @@
     <meta name="description" content="Portafolio de Rafael Jeyson Seguil Martinez, estudiante de Ingeniería de Software e IA, practicante de TI en Monaco SD.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Marca que hay JavaScript (las animaciones de entrada dependen de esto) y aplica el tema guardado antes de pintar
+        document.documentElement.classList.add('js');
+        try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="animations.css">
 
     <style>
         /* 1. VARIABLES Y CONFIGURACIÓN BASE (Colores y Temas) */
@@ -35,9 +41,6 @@
             font-family: 'Inter', sans-serif;
             margin: 0;
             transition: background-color 0.3s, color 0.3s;
-            background-image: url("https://laravel.com/img/notification-dots.png");
-            background-repeat: no-repeat;
-            background-position: top right;
         }
 
         /* 2. ESTILOS DE LA BARRA LATERAL (Botones de contacto y tema) */
@@ -89,8 +92,29 @@
 
         .profile-container {
             margin: 0 auto 20px; width: 160px; height: 160px; position: relative;
-            border: 2px solid var(--red-laravel); border-radius: 50%; padding: 6px;
+            border-radius: 50%; padding: 6px;
             display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Aro de degradado que gira alrededor de la foto */
+        .profile-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--red-laravel), #ff9a5a, rgba(255,45,32,0) 45%, var(--red-laravel));
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 3px));
+            animation: spin 5s linear infinite;
+        }
+
+        /* Pulso suave de luz alrededor del aro */
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            animation: glow 3s ease-out infinite;
         }
 
         .profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
@@ -279,15 +303,103 @@
         .contact-item .value { font-size: 0.92rem; font-weight: 700; word-break: break-word; }
 
         footer { text-align: center; padding: 40px; color: var(--text-gray); font-size: 0.8rem; border-top: 1px solid var(--border-color); }
+
+        /* 9. ANIMACIONES */
+
+        /* Fondo: manchas de color que derivan lentamente */
+        .bg-orbs { position: fixed; inset: 0; overflow: hidden; z-index: -1; pointer-events: none; }
+        .bg-orbs span { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .32; will-change: transform; }
+        .bg-orbs span:nth-child(1) { width: 460px; height: 460px; background: #ff2d20; top: -160px; right: -120px; animation: drift1 24s ease-in-out infinite alternate; }
+        .bg-orbs span:nth-child(2) { width: 380px; height: 380px; background: #ff8a65; bottom: -140px; left: -120px; animation: drift2 28s ease-in-out infinite alternate; }
+        .bg-orbs span:nth-child(3) { width: 300px; height: 300px; background: #ff5a8a; top: 42%; left: 58%; opacity: .16; animation: drift3 32s ease-in-out infinite alternate; }
+        [data-theme="dark"] .bg-orbs span { opacity: .2; }
+        [data-theme="dark"] .bg-orbs span:nth-child(3) { opacity: .1; }
+
+        @keyframes drift1 { to { transform: translate(-140px, 180px) scale(1.15); } }
+        @keyframes drift2 { to { transform: translate(160px, -140px) scale(1.2); } }
+        @keyframes drift3 { to { transform: translate(-200px, 120px) scale(.85); } }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes glow {
+            from { box-shadow: 0 0 0 0 rgba(255,45,32,.35); }
+            to   { box-shadow: 0 0 0 26px rgba(255,45,32,0); }
+        }
+
+        /* Botones laterales: entran desde la derecha */
+        .side-btn { animation: slideInRight .6s cubic-bezier(.2,.7,.2,1) backwards; }
+        .side-bar > :nth-child(1) { animation-delay: .5s; }
+        .side-bar > :nth-child(2) { animation-delay: .6s; }
+        .side-bar > :nth-child(3) { animation-delay: .7s; }
+        .side-bar > :nth-child(4) { animation-delay: .8s; }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } }
+
+        /* Línea de roles con efecto de escritura */
+        .hero-roles { font-size: 1.15rem; font-weight: 700; min-height: 1.9em; margin: 0 0 14px; color: var(--red-laravel); }
+        .hero-roles .caret {
+            display: inline-block; width: 2px; height: 1.1em; margin-left: 3px;
+            background: currentColor; vertical-align: -0.2em; animation: blink 1s steps(1) infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Indicador de disponibilidad con pulso */
+        .availability-badge .dot { animation: ping 2s ease-out infinite; }
+        @keyframes ping {
+            from { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+            to   { box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+        }
+
+        /* Botón de CV con destello al pasar el cursor */
+        .btn-cv { position: relative; overflow: hidden; }
+        .btn-cv::after {
+            content: ''; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255,255,255,.4), transparent);
+            transform: skewX(-20deg);
+        }
+        .btn-cv:hover::after { animation: shine .8s ease; }
+        @keyframes shine { to { left: 130%; } }
+
+        /* Íconos de habilidades: pequeño salto al pasar el cursor */
+        .skill-item i { transition: transform .35s cubic-bezier(.3, 1.6, .5, 1); }
+        .skill-item:hover i { transform: scale(1.25) rotate(-8deg); }
+
+        /* Tarjetas de proyecto: foco de luz que sigue al cursor */
+        .project-card { position: relative; overflow: hidden; }
+        .project-card::before {
+            content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+            background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(255,45,32,.12), transparent 60%);
+            opacity: 0; transition: opacity .3s;
+        }
+        .project-card:hover::before { opacity: 1; }
+        .project-card > * { position: relative; z-index: 1; }
+
+        /* Línea de tiempo: desplazamiento al pasar el cursor */
+        .timeline-item { transition: transform .3s ease, box-shadow .3s ease, background-color .3s, border-color .3s; }
+        .timeline-item:hover { transform: translateX(6px); box-shadow: 0 14px 30px -18px rgba(255,45,32,.5); }
+
+        /* Títulos de sección: la barra de acento se dibuja al aparecer */
+        .section-title::after {
+            content: ''; display: block; width: 64px; height: 4px; margin: 14px auto 0;
+            border-radius: 4px; background: var(--red-laravel);
+        }
+        .js .section-title::after { width: 0; transition: width .8s ease .35s; }
+        .js .section-title.in::after { width: 64px; }
+
+        @media (max-width: 720px) {
+            .bg-orbs span { filter: blur(50px); }
+            .bg-orbs span:nth-child(1) { width: 300px; height: 300px; }
+            .bg-orbs span:nth-child(2) { width: 260px; height: 260px; }
+            .bg-orbs span:nth-child(3) { display: none; }
+        }
     </style>
 </head>
 <body>
+
+<div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <div class="side-bar">
     <a href="mailto:smrj.1421@gmail.com" class="side-btn contact-special" title="Contactar conmigo">
         <i class="fas fa-paper-plane"></i>
     </a>
-    <div class="side-btn" id="theme-toggle" title="Modo Oscuro/Claro">
+    <div class="side-btn" id="theme-toggle" title="Modo Oscuro/Claro" role="button" tabindex="0" aria-label="Cambiar entre modo claro y oscuro">
         <i class="fas fa-moon" id="theme-icon"></i>
     </div>
     <a href="https://github.com/SMRJ1421" target="_blank" class="side-btn" title="GitHub"><i class="fab fa-github"></i></a>
@@ -295,52 +407,56 @@
 </div>
 
 <nav class="navbar">
-    <div class="logo-text">RAFAEL<span>MARTINEZ</span></div>
+    <div class="logo-text reveal" data-delay="0">RAFAEL<span>MARTINEZ</span></div>
 </nav>
 
 <header>
-    <div class="profile-container">
+    <div class="profile-container reveal reveal-zoom" data-delay="100">
         <img src="Jeyson.jpeg" alt="Rafael Martínez" class="profile-img">
     </div>
 
-    <h1 class="hero-title">Sobre <span style="color: var(--red-laravel)">Mi</span>.</h1>
+    <h1 class="hero-title reveal" data-delay="220">Sobre <span style="color: var(--red-laravel)">Mi</span>.</h1>
 
-    <p class="hero-desc">
+    <p class="hero-roles reveal" data-delay="340">
+        <span id="typed" data-phrases="Desarrollador Full Stack|Estudiante de Ingeniería de Software e IA|Practicante de TI en Monaco SD|Apasionado por los datos y la IA">Desarrollador Full Stack</span><span class="caret" aria-hidden="true"></span>
+    </p>
+
+    <p class="hero-desc reveal" data-delay="460">
         Soy un apasionado de la <strong>Tecnología</strong>.
         Mi enfoque se centra en construir soluciones eficientes combinando el desarrollo Full Stack
         con el análisis de datos. Estudiante de Ingeniería de Software e IA con sólida base en
         Backend (PHP, Java, Python) y gestión de bases de datos SQL.
     </p>
 
-    <span class="availability-badge"><span class="dot"></span> Disponibilidad inmediata</span>
+    <span class="availability-badge reveal" data-delay="580"><span class="dot"></span> Disponibilidad inmediata</span>
 
-    <div class="cta-row">
+    <div class="cta-row reveal" data-delay="700">
         <a href="cv.pdf" download class="btn-cv"><i class="fas fa-file-arrow-down"></i> Descargar CV</a>
     </div>
 
     <div class="skills-section">
-        <h2 class="skills-title">Mis Habilidades</h2>
-        <div class="skills-grid">
-            <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
-            <div class="skill-item"><i class="fab fa-java"></i><span>Java</span></div>
-            <div class="skill-item"><i class="fab fa-php"></i><span>PHP</span></div>
-            <div class="skill-item"><i class="fas fa-hashtag"></i><span>C#</span></div>
-            <div class="skill-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
-            <div class="skill-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
-            <div class="skill-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
-            <div class="skill-item"><i class="fas fa-database"></i><span>Oracle DB</span></div>
-            <div class="skill-item"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
-            <div class="skill-item"><i class="fas fa-database"></i><span>MySQL</span></div>
-            <div class="skill-item"><i class="fas fa-project-diagram"></i><span>StarUML</span></div>
-            <div class="skill-item"><i class="fas fa-code-branch"></i><span>Scrum</span></div>
+        <h2 class="skills-title reveal">Mis Habilidades</h2>
+        <div class="skills-grid" data-stagger="60">
+            <div class="skill-item reveal reveal-zoom"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fab fa-java"></i><span>Java</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fab fa-php"></i><span>PHP</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fas fa-hashtag"></i><span>C#</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fab fa-html5"></i><span>HTML5</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fab fa-js"></i><span>JavaScript</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fas fa-database"></i><span>Oracle DB</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fas fa-database"></i><span>MySQL</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fas fa-project-diagram"></i><span>StarUML</span></div>
+            <div class="skill-item reveal reveal-zoom"><i class="fas fa-code-branch"></i><span>Scrum</span></div>
         </div>
     </div>
 </header>
 
 <main class="container">
-    <h2 class="section-title">Experiencia</h2>
-    <div class="timeline">
-        <div class="timeline-item">
+    <h2 class="section-title reveal">Experiencia</h2>
+    <div class="timeline" data-stagger="130">
+        <div class="timeline-item reveal reveal-left">
             <p class="role">Practicante de TI de Sistemas</p>
             <span class="org">Monaco SD (empresa de importación)</span>
             <span class="period">2026 – Presente</span>
@@ -350,7 +466,7 @@
                 <li>Consultas a gran escala mediante OpenCode conectado al sistema.</li>
             </ul>
         </div>
-        <div class="timeline-item">
+        <div class="timeline-item reveal reveal-left">
             <p class="role">Oficial de Construcción y Control de Calidad</p>
             <span class="org">INARCO / DVC</span>
             <span class="period">2021 – 2025</span>
@@ -364,9 +480,9 @@
 </main>
 
 <main class="container">
-    <h2 class="section-title">Educación</h2>
-    <div class="timeline">
-        <div class="timeline-item">
+    <h2 class="section-title reveal">Educación</h2>
+    <div class="timeline" data-stagger="130">
+        <div class="timeline-item reveal reveal-left">
             <p class="role">Ingeniería de Software e Inteligencia Artificial</p>
             <span class="org">SENATI — Campus Independencia</span>
             <span class="period">2025 – Presente (4to ciclo)</span>
@@ -375,10 +491,10 @@
 </main>
 
 <main class="container">
-    <h2 class="section-title">Proyectos Destacados</h2>
+    <h2 class="section-title reveal">Proyectos Destacados</h2>
 
-    <div class="projects-grid">
-        <a href="nexus-stock.html" class="project-link">
+    <div class="projects-grid" data-stagger="100">
+        <a href="nexus-stock.html" class="project-link reveal">
             <article class="project-card">
                 <div class="project-content">
                     <span class="project-tag">Optimización</span>
@@ -392,7 +508,7 @@
             </article>
         </a>
 
-        <article class="project-card">
+        <article class="project-card reveal">
             <div class="project-content">
                 <span class="project-tag">Finanzas</span>
                 <h3>Gestión de Cobranza</h3>
@@ -404,7 +520,7 @@
             </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card reveal">
             <div class="project-content">
                 <span class="project-tag">Salud</span>
                 <h3>Sistema de Gestión de Farmacia</h3>
@@ -417,7 +533,7 @@
             </div>
         </article>
 
-        <a href="registro-visitas.html" class="project-link">
+        <a href="registro-visitas.html" class="project-link reveal">
             <article class="project-card">
                 <div class="project-content">
                     <span class="project-tag">Seguridad</span>
@@ -434,7 +550,7 @@
             </article>
         </a>
 
-        <a href="visitas-municipal.html" class="project-link">
+        <a href="visitas-municipal.html" class="project-link reveal">
             <article class="project-card">
                 <div class="project-content">
                     <span class="project-tag">Modelado</span>
@@ -453,44 +569,44 @@
 </main>
 
 <main class="container">
-    <h2 class="section-title">Contacto</h2>
-    <div class="contact-grid">
-        <a href="mailto:smrj.1421@gmail.com" class="contact-item">
+    <h2 class="section-title reveal">Contacto</h2>
+    <div class="contact-grid" data-stagger="70">
+        <a href="mailto:smrj.1421@gmail.com" class="contact-item reveal">
             <i class="fas fa-envelope"></i>
             <div>
                 <span class="label">Correo</span><br>
                 <span class="value">smrj.1421@gmail.com</span>
             </div>
         </a>
-        <a href="mailto:jeyson.1421@gmail.com" class="contact-item">
+        <a href="mailto:jeyson.1421@gmail.com" class="contact-item reveal">
             <i class="fas fa-envelope-open-text"></i>
             <div>
                 <span class="label">Correo alterno</span><br>
                 <span class="value">jeyson.1421@gmail.com</span>
             </div>
         </a>
-        <a href="tel:+51916794502" class="contact-item">
+        <a href="tel:+51916794502" class="contact-item reveal">
             <i class="fas fa-phone"></i>
             <div>
                 <span class="label">Teléfono</span><br>
                 <span class="value">916 794 502</span>
             </div>
         </a>
-        <div class="contact-item">
+        <div class="contact-item reveal">
             <i class="fas fa-location-dot"></i>
             <div>
                 <span class="label">Dirección</span><br>
                 <span class="value">Av. Túpac Amaru 4619</span>
             </div>
         </div>
-        <a href="https://linkedin.com/in/rafael-seguil-martinez" target="_blank" class="contact-item">
+        <a href="https://linkedin.com/in/rafael-seguil-martinez" target="_blank" class="contact-item reveal">
             <i class="fab fa-linkedin"></i>
             <div>
                 <span class="label">LinkedIn</span><br>
                 <span class="value">rafael-seguil-martinez</span>
             </div>
         </a>
-        <a href="https://github.com/SMRJ1421" target="_blank" class="contact-item">
+        <a href="https://github.com/SMRJ1421" target="_blank" class="contact-item reveal">
             <i class="fab fa-github"></i>
             <div>
                 <span class="label">GitHub</span><br>
@@ -505,17 +621,26 @@
 <script>
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
+    const root = document.documentElement;
 
-    themeToggle.addEventListener('click', () => {
-        if (document.documentElement.getAttribute('data-theme') !== 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
+    const syncIcon = () => {
+        themeIcon.className = root.getAttribute('data-theme') === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    };
+    const toggleTheme = () => {
+        const goDark = root.getAttribute('data-theme') !== 'dark';
+        if (goDark) root.setAttribute('data-theme', 'dark');
+        else root.removeAttribute('data-theme');
+        syncIcon();
+        try { localStorage.setItem('theme', goDark ? 'dark' : 'light'); } catch (e) {}
+    };
+
+    syncIcon();
+    themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
     });
 </script>
+<script src="animations.js"></script>
 
 </body>
 </html>

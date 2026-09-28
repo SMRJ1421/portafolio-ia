@@ -7,7 +7,9 @@
     <meta name="description" content="Sistema web de registro de visitas con autenticación 2FA, consulta automática a RENIEC, auditoría y reportes en PDF/Excel.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
     <style>
         /* Las capturas de este informe son verticales: el visor necesita más alto y más angosto */
         .carrusel-container { max-width: 620px; }
@@ -17,16 +19,16 @@
 </head>
 <body>
     <main class="container">
-        <nav>
+        <nav class="reveal">
             <a href="index.html" class="btn-back">&larr; Volver al inicio</a>
         </nav>
 
-        <header class="project-header">
+        <header class="project-header reveal" data-delay="120">
             <h1>Registro de Visitas Municipal</h1>
             <p class="tagline">Sistema web de control de accesos institucionales: registro y salida de visitantes, autenticación en dos pasos para el personal, consulta automática a RENIEC y reportes de auditoría exportables.</p>
         </header>
 
-        <section class="carrusel-container">
+        <section class="carrusel-container reveal reveal-zoom" data-delay="240">
             <div class="carrusel-slides">
                 <article class="carrusel-slide"><img src="registro-1-portal-transparencia.png" alt="Portal de transparencia y reportes de visitas"></article>
                 <article class="carrusel-slide"><img src="registro-2-reportes-estadisticas.png" alt="Vista preliminar de reportes y panel estadístico"></article>
@@ -41,8 +43,8 @@
             <div class="carrusel-dots"></div>
         </section>
 
-        <section class="project-description">
-            <div class="info-card">
+        <section class="project-description" data-stagger="150">
+            <div class="info-card reveal">
                 <h2>Sobre el proyecto</h2>
                 <p>
                     Sistema web para el control de accesos de una institución pública, basado en normativa PCM.
@@ -55,30 +57,30 @@
                 </p>
             </div>
 
-            <div class="tech-card">
+            <div class="tech-card reveal">
                 <h3>Tecnologías utilizadas</h3>
-                <ul class="tech-list tech-list-icons">
-                    <li>
+                <ul data-stagger="90" class="tech-list tech-list-icons">
+                    <li class="reveal">
                         <span class="tech-icon"><i class="fab fa-php"></i></span>
                         <span class="desc"><strong>PHP:</strong> backend del sistema, sesiones y lógica de negocio.</span>
                     </li>
-                    <li>
+                    <li class="reveal">
                         <span class="tech-icon"><i class="fas fa-database"></i></span>
                         <span class="desc"><strong>PostgreSQL:</strong> base de datos relacional (usuarios, funcionarios, ciudadanos, visitas y auditoría).</span>
                     </li>
-                    <li>
+                    <li class="reveal">
                         <span class="tech-icon"><i class="fab fa-js"></i></span>
                         <span class="desc"><strong>JavaScript:</strong> formularios interactivos, filtros y gráficos en tiempo real.</span>
                     </li>
-                    <li>
+                    <li class="reveal">
                         <span class="tech-icon"><i class="fas fa-shield-halved"></i></span>
                         <span class="desc"><strong>Autenticación 2FA:</strong> segundo factor de verificación para el acceso administrativo.</span>
                     </li>
-                    <li>
+                    <li class="reveal">
                         <span class="tech-icon"><i class="fas fa-id-card"></i></span>
                         <span class="desc"><strong>API RENIEC:</strong> consulta automática de datos del ciudadano por DNI.</span>
                     </li>
-                    <li>
+                    <li class="reveal">
                         <span class="tech-icon"><i class="fas fa-file-export"></i></span>
                         <span class="desc"><strong>Reportes PDF / Excel:</strong> exportación del historial de visitas para auditoría.</span>
                     </li>
@@ -88,5 +90,6 @@
     </main>
 
     <script src="script.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>

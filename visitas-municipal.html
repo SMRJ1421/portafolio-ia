@@ -7,20 +7,22 @@
     <meta name="description" content="Modelado UML completo de un sistema de registro de visitas municipal con autenticación DNIe/RENIEC, basado en los lineamientos de la PCM.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
 </head>
 <body>
     <main class="container">
-        <nav>
+        <nav class="reveal">
             <a href="index.html" class="btn-back">&larr; Volver al inicio</a>
         </nav>
 
-        <header class="project-header">
+        <header class="project-header reveal" data-delay="120">
             <h1>Modelado UML: Registro de Visitas</h1>
             <p class="tagline">Modelado UML completo de un sistema de control de ingresos para una municipalidad, con autenticación mediante DNI electrónico y validación contra RENIEC, siguiendo los lineamientos de la PCM y la Ley N.º 28024 de Transparencia.</p>
         </header>
 
-        <section class="carrusel-container">
+        <section class="carrusel-container reveal reveal-zoom" data-delay="240">
             <div class="carrusel-slides">
                 <article class="carrusel-slide"><img src="visitas-1-casos-uso.jpg" alt="Diagrama de casos de uso"></article>
                 <article class="carrusel-slide"><img src="visitas-2-requisitos.jpg" alt="Mapeo de requerimientos funcionales y no funcionales"></article>
@@ -39,8 +41,8 @@
             <div class="carrusel-dots"></div>
         </section>
 
-        <section class="project-description">
-            <div class="info-card">
+        <section class="project-description" data-stagger="150">
+            <div class="info-card reveal">
                 <h2>Sobre el proyecto</h2>
                 <p>
                     El ciudadano se autentica con su <strong>DNI electrónico (DNIe)</strong>: un componente
@@ -52,30 +54,31 @@
                 </p>
             </div>
 
-            <div class="tech-card">
+            <div class="tech-card reveal">
                 <h3>Tecnologías</h3>
-                <div class="tech-badges">
-                    <span class="tech-badge"><i class="fas fa-project-diagram"></i> StarUML</span>
-                    <span class="tech-badge"><i class="fas fa-code-branch"></i> Scrum</span>
-                    <span class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</span>
-                    <span class="tech-badge"><i class="fas fa-chart-pie"></i> Power BI</span>
+                <div class="tech-badges" data-stagger="70">
+                    <span class="tech-badge reveal"><i class="fas fa-project-diagram"></i> StarUML</span>
+                    <span class="tech-badge reveal"><i class="fas fa-code-branch"></i> Scrum</span>
+                    <span class="tech-badge reveal"><i class="fas fa-database"></i> PostgreSQL</span>
+                    <span class="tech-badge reveal"><i class="fas fa-chart-pie"></i> Power BI</span>
                 </div>
                 <h3>Diagramas UML elaborados</h3>
-                <ul class="tech-list">
-                    <li><strong>Casos de uso:</strong> interacción del visitante, RENIEC y el administrador con el sistema.</li>
-                    <li><strong>Requisitos:</strong> mapeo de requerimientos funcionales y no funcionales (integridad, seguridad, trazabilidad).</li>
-                    <li><strong>Actividades:</strong> flujo de validación de DNI y registro de ingreso.</li>
-                    <li><strong>Secuencia:</strong> autenticación con DNIe entre interfaz, componente ClickOnce y RENIEC.</li>
-                    <li><strong>Estados:</strong> ciclo de vida de una visita (validando, registrada, en curso, finalizada, denegada).</li>
-                    <li><strong>Clases:</strong> modelo de dominio (Ciudadano, RegistroVisita, ServidorPúblico, ServicioAutenticación).</li>
-                    <li><strong>Modelo de datos:</strong> esquema relacional (usuario_sistema, ciudadano, visita, funcionario).</li>
-                    <li><strong>Componentes y despliegue:</strong> integración entre interfaz web, backend, lector de hardware y RENIEC.</li>
-                    <li><strong>Dashboard Power BI:</strong> reporte de visitas por área y motivo.</li>
+                <ul data-stagger="90" class="tech-list">
+                    <li class="reveal"><strong>Casos de uso:</strong> interacción del visitante, RENIEC y el administrador con el sistema.</li>
+                    <li class="reveal"><strong>Requisitos:</strong> mapeo de requerimientos funcionales y no funcionales (integridad, seguridad, trazabilidad).</li>
+                    <li class="reveal"><strong>Actividades:</strong> flujo de validación de DNI y registro de ingreso.</li>
+                    <li class="reveal"><strong>Secuencia:</strong> autenticación con DNIe entre interfaz, componente ClickOnce y RENIEC.</li>
+                    <li class="reveal"><strong>Estados:</strong> ciclo de vida de una visita (validando, registrada, en curso, finalizada, denegada).</li>
+                    <li class="reveal"><strong>Clases:</strong> modelo de dominio (Ciudadano, RegistroVisita, ServidorPúblico, ServicioAutenticación).</li>
+                    <li class="reveal"><strong>Modelo de datos:</strong> esquema relacional (usuario_sistema, ciudadano, visita, funcionario).</li>
+                    <li class="reveal"><strong>Componentes y despliegue:</strong> integración entre interfaz web, backend, lector de hardware y RENIEC.</li>
+                    <li class="reveal"><strong>Dashboard Power BI:</strong> reporte de visitas por área y motivo.</li>
                 </ul>
             </div>
         </section>
     </main>
 
     <script src="script.js"></script>
+    <script src="animations.js"></script>
 </body>
 </html>
