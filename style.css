@@ -304,3 +304,7 @@ nav { margin-bottom: 30px; }
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Logos reales de tecnología dentro de las cajitas de íconos y las insignias */
+.tech-icon img { width: 22px; height: 22px; object-fit: contain; }
+.tech-badge img { width: 16px; height: 16px; object-fit: contain; }

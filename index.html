@@ -277,7 +277,15 @@
             padding: 5px 12px;
             border-radius: 20px;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
+
+        /* Logos de tecnología dentro de las etiquetas y en la cuadrícula de habilidades */
+        .tech-logo { width: 14px; height: 14px; object-fit: contain; flex-shrink: 0; }
+        .project-techs i { font-size: 0.85rem; }
+        .skill-item .tech-logo-lg { width: 29px; height: 29px; object-fit: contain; }
 
         /* 7. EXPERIENCIA Y EDUCACIÓN (Timeline) */
         .timeline { display: flex; flex-direction: column; gap: 24px; }
@@ -405,6 +413,15 @@
 </head>
 <body>
 
+<!-- Íconos SVG reutilizables (Power BI no tiene logo en las librerías abiertas, se dibuja como tres barras) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="logo-powerbi" viewBox="0 0 24 24">
+        <rect x="2"    y="13" width="5" height="9"  rx="1.4" fill="#F9D949"/>
+        <rect x="9.5"  y="7"  width="5" height="15" rx="1.4" fill="#F2B90F"/>
+        <rect x="17"   y="2"  width="5" height="20" rx="1.4" fill="#D9930A"/>
+    </symbol>
+</svg>
+
 <div class="bg-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
 
 <div class="side-bar">
@@ -452,13 +469,13 @@
             <div class="skill-item reveal reveal-zoom"><i class="fab fa-python"></i><span>Python</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fab fa-java"></i><span>Java</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fab fa-php"></i><span>PHP</span></div>
-            <div class="skill-item reveal reveal-zoom"><i class="fas fa-hashtag"></i><span>C#</span></div>
+            <div class="skill-item reveal reveal-zoom"><img class="tech-logo-lg" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/csharp/csharp-original.svg" alt="" width="29" height="29" loading="lazy"><span>C#</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fab fa-html5"></i><span>HTML5</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fab fa-js"></i><span>JavaScript</span></div>
-            <div class="skill-item reveal reveal-zoom"><i class="fas fa-database"></i><span>Oracle DB</span></div>
-            <div class="skill-item reveal reveal-zoom"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
-            <div class="skill-item reveal reveal-zoom"><i class="fas fa-database"></i><span>MySQL</span></div>
+            <div class="skill-item reveal reveal-zoom"><img class="tech-logo-lg" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/oracle/oracle-original.svg" alt="" width="29" height="29" loading="lazy"><span>Oracle DB</span></div>
+            <div class="skill-item reveal reveal-zoom"><img class="tech-logo-lg" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" width="29" height="29" loading="lazy"><span>PostgreSQL</span></div>
+            <div class="skill-item reveal reveal-zoom"><img class="tech-logo-lg" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/mysql/mysql-original.svg" alt="" width="29" height="29" loading="lazy"><span>MySQL</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fas fa-project-diagram"></i><span>StarUML</span></div>
             <div class="skill-item reveal reveal-zoom"><i class="fas fa-code-branch"></i><span>Scrum</span></div>
         </div>
@@ -514,8 +531,8 @@
                     <p>Sistema predictivo para la gestión de inventarios usando redes neuronales. Optimiza el stock en tiempo real.</p>
                 </div>
                 <div class="project-techs">
-                    <span>PHP</span>
-                    <span>PostgreSQL</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg" alt="" width="14" height="14" loading="lazy">PHP</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" width="14" height="14" loading="lazy">PostgreSQL</span>
                 </div>
             </article>
         </a>
@@ -527,8 +544,8 @@
                 <p>Proyecto académico de automatización de reportes diarios y gestión de cobros integrada con bases de datos Oracle, inspirado en Caja Huancayo.</p>
             </div>
             <div class="project-techs">
-                <span>Java</span>
-                <span>Oracle DB</span>
+                <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" width="14" height="14" loading="lazy">Java</span>
+                <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/oracle/oracle-original.svg" alt="" width="14" height="14" loading="lazy">Oracle DB</span>
             </div>
         </article>
 
@@ -539,9 +556,9 @@
                 <p>Aplicación de escritorio modular inspirada en Inkafarma para control de ventas, inventarios y trazabilidad de datos.</p>
             </div>
             <div class="project-techs">
-                <span>Java Swing</span>
-                <span>Oracle SQL</span>
-                <span>Power BI</span>
+                <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/java/java-original.svg" alt="" width="14" height="14" loading="lazy">Java Swing</span>
+                <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/oracle/oracle-original.svg" alt="" width="14" height="14" loading="lazy">Oracle SQL</span>
+                <span><svg class="tech-logo" aria-hidden="true"><use href="#logo-powerbi"/></svg>Power BI</span>
             </div>
         </article>
 
@@ -553,11 +570,11 @@
                     <p>Plataforma web con login 2FA, validación de identidad en tiempo real vía API RENIEC, auditoría y reportes exportables en PDF/Excel.</p>
                 </div>
                 <div class="project-techs">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>PHP</span>
-                    <span>PostgreSQL</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/html5/html5-original.svg" alt="" width="14" height="14" loading="lazy">HTML</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/css3/css3-original.svg" alt="" width="14" height="14" loading="lazy">CSS</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/javascript/javascript-original.svg" alt="" width="14" height="14" loading="lazy">JavaScript</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/php/php-original.svg" alt="" width="14" height="14" loading="lazy">PHP</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" width="14" height="14" loading="lazy">PostgreSQL</span>
                 </div>
             </article>
         </a>
@@ -570,10 +587,10 @@
                     <p>Diseño previo con StarUML (casos de uso, clases, estados, componentes y despliegue) de un sistema de control de ingresos con autenticación DNIe/RENIEC, según lineamientos de la PCM.</p>
                 </div>
                 <div class="project-techs">
-                    <span>StarUML</span>
-                    <span>Scrum</span>
-                    <span>PostgreSQL</span>
-                    <span>Power BI</span>
+                    <span><i class="fas fa-project-diagram"></i>StarUML</span>
+                    <span><i class="fas fa-code-branch"></i>Scrum</span>
+                    <span><img class="tech-logo" src="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/postgresql/postgresql-original.svg" alt="" width="14" height="14" loading="lazy">PostgreSQL</span>
+                    <span><svg class="tech-logo" aria-hidden="true"><use href="#logo-powerbi"/></svg>Power BI</span>
                 </div>
             </article>
         </a>
