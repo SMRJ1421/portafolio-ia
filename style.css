@@ -11,6 +11,21 @@
   --bg-skill: #f9fafb;
 }
 
+/* Modo oscuro (mismos colores que index.html) */
+[data-theme="dark"] {
+  --bg-light: #0b1120;
+  --card-light: #1e293b;
+  --text-dark: #f8fafc;
+  --text-gray: #94a3b8;
+  --border-color: #334155;
+  --bg-skill: #1e293b;
+}
+
+[data-theme="dark"] .carrusel-container {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+}
+
 /* Colores de logos de tecnología (mismos que en index.html) */
 .fa-python { color: #3776AB; }
 .fa-java { color: #f89820; }
@@ -32,6 +47,7 @@ body {
   color: var(--text-dark);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {

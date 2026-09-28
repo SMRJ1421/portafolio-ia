@@ -7,11 +7,23 @@
     <meta name="description" content="Modelado UML completo de un sistema de registro de visitas municipal con autenticación DNIe/RENIEC, basado en los lineamientos de la PCM.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>document.documentElement.classList.add('js');</script>
+    <script>document.documentElement.classList.add('js'); try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}</script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
+
+<div class="side-bar">
+    <a href="mailto:smrj.1421@gmail.com" class="side-btn contact-special" title="Contactar conmigo">
+        <i class="fas fa-paper-plane"></i>
+    </a>
+    <div class="side-btn" id="theme-toggle" title="Modo Oscuro/Claro" role="button" tabindex="0" aria-label="Cambiar entre modo claro y oscuro">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </div>
+    <a href="https://github.com/SMRJ1421" target="_blank" class="side-btn" title="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://linkedin.com/in/rafael-seguil-martinez" target="_blank" class="side-btn" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+</div>
     <main class="container">
         <nav class="reveal">
             <a href="index.html" class="btn-back">&larr; Volver al inicio</a>
@@ -79,6 +91,7 @@
     </main>
 
     <script src="script.js"></script>
+    <script src="theme.js"></script>
     <script src="animations.js"></script>
 </body>
 </html>

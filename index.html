@@ -13,6 +13,7 @@
         try { if (localStorage.getItem('theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); } catch (e) {}
     </script>
     <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="sidebar.css">
 
     <style>
         /* 1. VARIABLES Y CONFIGURACIÓN BASE (Colores y Temas) */
@@ -43,44 +44,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* 2. ESTILOS DE LA BARRA LATERAL (Botones de contacto y tema) */
-        .side-bar {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
-        }
-
-        .side-btn {
-            width: 50px;
-            height: 50px;
-            background: var(--card-light);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            color: var(--text-dark);
-            text-decoration: none;
-        }
-
-        .side-btn.contact-special {
-            background: var(--red-laravel);
-            color: white;
-            border: none;
-        }
-
-        .side-btn:hover {
-            border-color: var(--red-laravel);
-            transform: scale(1.1);
-        }
+        /* 2. BARRA LATERAL: estilos en sidebar.css (compartido con las páginas de proyecto) */
 
         /* 3. NAVEGACIÓN Y LOGO */
         .navbar { padding: 2rem 2rem 0; display: flex; justify-content: center; }
@@ -323,14 +287,6 @@
             from { box-shadow: 0 0 0 0 rgba(255,45,32,.35); }
             to   { box-shadow: 0 0 0 26px rgba(255,45,32,0); }
         }
-
-        /* Botones laterales: entran desde la derecha */
-        .side-btn { animation: slideInRight .6s cubic-bezier(.2,.7,.2,1) backwards; }
-        .side-bar > :nth-child(1) { animation-delay: .5s; }
-        .side-bar > :nth-child(2) { animation-delay: .6s; }
-        .side-bar > :nth-child(3) { animation-delay: .7s; }
-        .side-bar > :nth-child(4) { animation-delay: .8s; }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } }
 
         /* Línea de roles con efecto de escritura */
         .hero-roles { font-size: 1.15rem; font-weight: 700; min-height: 1.9em; margin: 0 0 14px; color: var(--red-laravel); }
@@ -618,28 +574,7 @@
 
 <footer>&copy; 2026 Rafael Martínez. Todos los derechos reservados.</footer>
 
-<script>
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const root = document.documentElement;
-
-    const syncIcon = () => {
-        themeIcon.className = root.getAttribute('data-theme') === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-    };
-    const toggleTheme = () => {
-        const goDark = root.getAttribute('data-theme') !== 'dark';
-        if (goDark) root.setAttribute('data-theme', 'dark');
-        else root.removeAttribute('data-theme');
-        syncIcon();
-        try { localStorage.setItem('theme', goDark ? 'dark' : 'light'); } catch (e) {}
-    };
-
-    syncIcon();
-    themeToggle.addEventListener('click', toggleTheme);
-    themeToggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleTheme(); }
-    });
-</script>
+<script src="theme.js"></script>
 <script src="animations.js"></script>
 
 </body>
